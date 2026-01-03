@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JUN AI 助手</title>
+    <title>lzumi AI助手</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -51,7 +51,7 @@
         .new-chat-btn {
             width: 100%;
             padding: 12px 20px;
-            background: linear-gradient(135deg, #00d4aa 0%, #00a88e 100%);
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
             color: white;
             border: none;
             border-radius: 12px;
@@ -63,12 +63,12 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            box-shadow: 0 2px 8px rgba(0, 212, 170, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 102, 204, 0.2);
         }
 
         .new-chat-btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
         }
 
         .new-chat-btn:active {
@@ -106,16 +106,16 @@
         }
 
         .history-item:hover {
-            background: #e8f5f1;
+            background: #e6f0ff;
         }
 
         .history-item.active {
-            background: #e0f4ef;
+            background: #cce0ff;
         }
 
         .history-icon {
             font-size: 16px;
-            color: #00a88e;
+            color: #0066cc;
         }
 
         .history-title {
@@ -164,8 +164,8 @@
         }
 
         .api-input:focus {
-            border-color: #00d4aa;
-            box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
+            border-color: #0066cc;
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
         }
 
         .api-input::placeholder {
@@ -210,8 +210,8 @@
         }
 
         .action-btn:hover {
-            border-color: #00d4aa;
-            color: #00a88e;
+            border-color: #0066cc;
+            color: #004499;
         }
 
         .chat-container {
@@ -241,7 +241,7 @@
         .message {
             margin-bottom: 20px;
             display: flex;
-            gap: 12px;
+            justify-content: flex-start;
             animation: messageSlideIn 0.3s ease;
         }
 
@@ -257,26 +257,7 @@
         }
 
         .message.user {
-            flex-direction: row-reverse;
-        }
-
-        .avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        .message.user .avatar {
-            background: linear-gradient(135deg, #00d4aa 0%, #00a88e 100%);
-        }
-
-        .message.assistant .avatar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            justify-content: flex-end;
         }
 
         .message-content {
@@ -296,7 +277,7 @@
 
         .message.assistant .message-content {
             background: white;
-            color: #333;
+            color: #0066cc;
             border: 1px solid #e5e5e5;
             border-bottom-left-radius: 4px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -330,9 +311,9 @@
         }
 
         .input-box:focus {
-            border-color: #00d4aa;
+            border-color: #0066cc;
             background: white;
-            box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
         }
 
         .input-box::placeholder {
@@ -341,7 +322,7 @@
 
         .send-btn {
             padding: 14px 24px;
-            background: linear-gradient(135deg, #00d4aa 0%, #00a88e 100%);
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
             color: white;
             border: none;
             border-radius: 12px;
@@ -349,13 +330,13 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0, 212, 170, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 102, 204, 0.2);
             white-space: nowrap;
         }
 
         .send-btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
         }
 
         .send-btn:active {
@@ -389,7 +370,7 @@
         .typing-indicator span {
             width: 8px;
             height: 8px;
-            background: #00d4aa;
+            background: #0066cc;
             border-radius: 50%;
             animation: typing 1.4s infinite ease-in-out;
         }
@@ -548,9 +529,8 @@
 
             <div class="chat-container" id="chatContainer">
                 <div class="message assistant">
-                    <div class="avatar">🤖</div>
                     <div class="message-content">
-                        你好！我是 JUN AI 助手，有什么我可以帮助你的吗？
+                        你好！我是 lzumi，有什么我可以帮助你的吗？
                     </div>
                 </div>
             </div>
@@ -648,9 +628,8 @@
                     if (data.conversation.messages.length === 0) {
                         chatContainer.innerHTML = `
                             <div class="message assistant">
-                                <div class="avatar">🤖</div>
                                 <div class="message-content">
-                                    你好！我是 JUN AI 助手，有什么我可以帮助你的吗？
+                                    你好！我是 lzumi，有什么我可以帮助你的吗？
                                 </div>
                             </div>
                         `;
@@ -713,9 +692,8 @@
                     
                     chatContainer.innerHTML = `
                         <div class="message assistant">
-                            <div class="avatar">🤖</div>
                             <div class="message-content">
-                                你好！我是 JUN AI 助手，有什么我可以帮助你的吗？
+                                你好！我是 lzumi，有什么我可以帮助你的吗？
                             </div>
                         </div>
                     `;
@@ -742,15 +720,10 @@
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${isUser ? 'user' : 'assistant'}`;
             
-            const avatar = document.createElement('div');
-            avatar.className = 'avatar';
-            avatar.textContent = isUser ? '👤' : '🤖';
-            
             const contentDiv = document.createElement('div');
             contentDiv.className = 'message-content';
             contentDiv.textContent = content;
             
-            messageDiv.appendChild(avatar);
             messageDiv.appendChild(contentDiv);
             chatContainer.appendChild(messageDiv);
             chatContainer.scrollTop = chatContainer.scrollHeight;
@@ -793,9 +766,8 @@
                 if (response.ok) {
                     chatContainer.innerHTML = `
                         <div class="message assistant">
-                            <div class="avatar">🤖</div>
                             <div class="message-content">
-                                你好！我是 JUN AI 助手，有什么我可以帮助你的吗？
+                                你好！我是 lzumi，有什么我可以帮助你的吗？   
                             </div>
                         </div>
                     `;
