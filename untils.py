@@ -23,4 +23,3 @@ def get_chat_response(prompt,memory,ARK_API_KEY):
 
     response = conversation.invoke({"input": prompt})
     return response['response']
-

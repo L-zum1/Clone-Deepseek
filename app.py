@@ -5,7 +5,7 @@ from langchain.memory import ConversationBufferMemory
 import os
 
 # 设置页面标题
-st.title("JUN")
+st.title("通用AI助手")
 
 #加入侧边栏获取API密钥
 ARK_API_KEY =  os.getenv("ARK_API_KEY") or st.sidebar.text_input("请输入ARK_API_KEY", type="password")
@@ -15,7 +15,7 @@ if 'memory' not in st.session_state:
     st.session_state['memory'] = ConversationBufferMemory(return_messages=True)
 
 if 'chat_history' not in st.session_state:
-    st.session_state['chat_history'] = [{'role': 'system', 'content': '你是一个专业的助手'},{'role': 'ai', 'content': '你好！有什么我可以帮助你的吗？'}]
+    st.session_state['chat_history'] = [{'role': 'system', 'content': '你是一个专业的助手'},{'role': 'ai', 'content': '你好！我是 通用 AI 助手，有什么我可以帮助你的吗？'}]
 
 for message in st.session_state['chat_history']:
     st.chat_message(message['role']).write(message['content'])
@@ -31,7 +31,7 @@ if prompt:
     st.session_state['chat_history'].append({'role': 'user', 'content': prompt})
     st.chat_message('user').write(prompt)
 
-    with st.spinner("JUN正在思考..."):
+    with st.spinner("正在思考..."):
         response = get_chat_response(prompt,st.session_state['memory'],ARK_API_KEY)
 
     msg = {'role': 'ai', 'content': response}
