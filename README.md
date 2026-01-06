@@ -1,4 +1,4 @@
-# Clone-Deepseek
+# Lzumi-chatbot
 
 一个基于 DeepSeek API 的 AI 聊天助手应用，采用豆包风格的现代化界面设计。
 
